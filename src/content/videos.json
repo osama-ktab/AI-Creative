@@ -1,0 +1,30 @@
+[
+  {
+    "src": "WhatsApp Video 2026-04-30 at 3.51.21 PM.mp4",
+    "poster": "video-studio.webp",
+    "title": "مشهد تعريفي قصير",
+    "text": "يوضح العلاقة بين النص والصورة والصوت ضمن سير إنتاج واحد.",
+    "track": "/captions/generative-workflow.vtt"
+  },
+  {
+    "src": "WhatsApp Video 2026-04-30 at 3.56.45 PM.mp4",
+    "poster": "ai-brain-interface.webp",
+    "title": "تطبيقات الذكاء التوليدي",
+    "text": "يعرض أمثلة لاستخدام النماذج في المحتوى الرقمي التعليمي والإبداعي.",
+    "track": "/captions/multimedia-ai.vtt"
+  },
+  {
+    "src": "video1_final.mp4",
+    "poster": "visual-design.webp",
+    "title": "الفيديو الجديد الأول",
+    "text": "مقطع إضافي يدعم شرح الفكرة داخل المشروع ويمنح القسم تنوعًا أكبر.",
+    "track": "/captions/generative-workflow.vtt"
+  },
+  {
+    "src": "video2_final.mp4",
+    "poster": "story-robot.webp",
+    "title": "الفيديو الجديد الثاني",
+    "text": "مقطع إضافي يوسّع أمثلة العرض ويربط السرد البصري بالمحتوى التعليمي.",
+    "track": "/captions/multimedia-ai.vtt"
+  }
+]

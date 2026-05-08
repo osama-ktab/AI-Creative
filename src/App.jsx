@@ -1,88 +1,13 @@
 import "./App.css";
+import metrics from "./content/metrics.json";
+import workflowSteps from "./content/workflowSteps.json";
+import gallery from "./content/gallery.json";
+import tools from "./content/tools.json";
+import videos from "./content/videos.json";
+import audioTracks from "./content/audioTracks.json";
 
 const imagePath = "/Devices/webp/";
 const mediaPath = "/Devices/";
-
-const metrics = [
-  {
-    value: "+36",
-    label: "تجربة مرئية وصوتية",
-    note: "قوالب أولية يمكن تطويرها بسرعة داخل مشاريع الطلاب.",
-  },
-  {
-    value: "4",
-    label: "محاور رئيسية",
-    note: "نص، صورة، صوت، فيديو ضمن بيئة عمل واحدة.",
-  },
-  {
-    value: "100%",
-    label: "واجهة عربية",
-    note: "مبنية لتقديم المحتوى العلمي بطريقة واضحة وسلسة.",
-  },
-];
-
-const workflowSteps = [
-  {
-    id: "01",
-    title: "صياغة الفكرة",
-    text: "نبدأ من وصف نصي دقيق يحدد الرسالة، النبرة، والجمهور المستهدف.",
-  },
-  {
-    id: "02",
-    title: "توليد الوسائط",
-    text: "تحويل الفكرة إلى صور وتسجيلات صوتية ومشاهد فيديو قابلة للعرض.",
-  },
-  {
-    id: "03",
-    title: "تحرير ومراجعة",
-    text: "مراجعة بشرية للغة والهوية البصرية والاتساق المعرفي قبل النشر.",
-  },
-  {
-    id: "04",
-    title: "تجربة المستخدم",
-    text: "ترتيب المحتوى بصرياً داخل صفحة سريعة وتفاعلية ومتوافقة مع الهاتف.",
-  },
-];
-
-const gallery = [
-  {
-    src: "neural-brain.webp",
-    title: "تمثيل بصري للشبكات العصبية",
-    text: "صورة معالجة توضح انتقال المعلومات داخل نموذج تعلم عميق.",
-  },
-  {
-    src: "image-generation.webp",
-    title: "توليد الصور من الوصف",
-    text: "مثال على تحويل فكرة نصية إلى مشهد بصري قابل للاستخدام في الوسائط.",
-  },
-  {
-    src: "audio-waves.webp",
-    title: "بناء الصوت الاصطناعي",
-    text: "تصميم موجات صوتية لاستخدامها في السرد، المؤثرات، أو التعليق.",
-  },
-  {
-    src: "video-studio.webp",
-    title: "إنتاج فيديو مدعوم بالنماذج",
-    text: "واجهة تخيلية لسير عمل يجمع النص والصورة والصوت داخل مشهد واحد.",
-  },
-  {
-    src: "human-robot-collab.webp",
-    title: "تعاون الإنسان والأداة",
-    text: "الهدف ليس استبدال المصمم، بل تسريع التجريب وتوسيع البدائل.",
-  },
-  {
-    src: "model-architecture.webp",
-    title: "طبقات النموذج التوليدي",
-    text: "رسم يشرح كيف تتحول البيانات إلى أنماط ثم إلى مخرجات جديدة.",
-  },
-];
-
-const tools = [
-  ["النص", "نماذج لغوية تكتب، تلخص، تقترح سيناريوهات، وتعيد صياغة المحتوى."],
-  ["الصورة", "نماذج انتشار وتحوير بصري تنتج رسوماً، ملصقات، ولقطات مفاهيمية."],
-  ["الصوت", "توليد تعليق صوتي، موسيقى قصيرة، مؤثرات، وتنظيف التسجيلات."],
-  ["الفيديو", "مزج صور ومقاطع وصوت ونصوص لإنتاج شرح بصري قصير."],
-];
 
 function App() {
   return (
@@ -249,68 +174,36 @@ function App() {
         </div>
 
         <div className="video-grid">
-          <article className="video-panel">
-            <video
-              controls
-              poster={`${imagePath}video-studio.webp`}
-              preload="metadata">
-              <source
-                src={`${mediaPath}WhatsApp Video 2026-04-30 at 3.51.21 PM.mp4`}
-                type="video/mp4"
-              />
-              <track
-                default
-                kind="subtitles"
-                src="/captions/generative-workflow.vtt"
-                srcLang="ar"
-                label="العربية"
-              />
-            </video>
-            <h3>مشهد تعريفي قصير</h3>
-            <p>يوضح العلاقة بين النص والصورة والصوت ضمن سير إنتاج واحد.</p>
-          </article>
-
-          <article className="video-panel">
-            <video
-              controls
-              poster={`${imagePath}ai-brain-interface.webp`}
-              preload="metadata">
-              <source
-                src={`${mediaPath}WhatsApp Video 2026-04-30 at 3.56.45 PM.mp4`}
-                type="video/mp4"
-              />
-              <track
-                default
-                kind="subtitles"
-                src="/captions/multimedia-ai.vtt"
-                srcLang="ar"
-                label="العربية"
-              />
-            </video>
-            <h3>تطبيقات الذكاء التوليدي</h3>
-            <p>
-              يعرض أمثلة لاستخدام النماذج في المحتوى الرقمي التعليمي والإبداعي.
-            </p>
-          </article>
+          {videos.map((video) => (
+            <article key={video.src} className="video-panel">
+              <video
+                controls
+                poster={`${imagePath}${video.poster}`}
+                preload="metadata">
+                <source src={`${mediaPath}${video.src}`} type="video/mp4" />
+                <track
+                  default
+                  kind="subtitles"
+                  src={video.track}
+                  srcLang="ar"
+                  label="العربية"
+                />
+              </video>
+              <h3>{video.title}</h3>
+              <p>{video.text}</p>
+            </article>
+          ))}
         </div>
 
         <div className="audio-row" aria-label="مقاطع صوتية">
-          <article>
-            <h3>تعليق صوتي موجز</h3>
-            <audio
-              controls
-              src={`${mediaPath}WhatsApp Audio 2026-04-30 at 3.56.44 PM.mpeg`}>
-              المتصفح لا يدعم تشغيل الصوت.
-            </audio>
-          </article>
-          <article>
-            <h3>شرح صوتي موسع</h3>
-            <audio
-              controls
-              src={`${mediaPath}WhatsApp Audio 2026-04-30 at 3.56.45 PM.mpeg`}>
-              المتصفح لا يدعم تشغيل الصوت.
-            </audio>
-          </article>
+          {audioTracks.map((audioTrack) => (
+            <article key={audioTrack.src}>
+              <h3>{audioTrack.title}</h3>
+              <audio controls src={`${mediaPath}${audioTrack.src}`}>
+                المتصفح لا يدعم تشغيل الصوت.
+              </audio>
+            </article>
+          ))}
         </div>
       </section>
 
